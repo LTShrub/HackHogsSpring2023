@@ -2,6 +2,33 @@
 
 const savingsRanked = document.getElementById('savings-ranked');
 
+function findSolution(travelLength, raining){
+    acceptable = false;
+    shortTrav = 5;
+    medTrav = 10;
+
+    if(!raining){
+        acceptable = true;
+    }
+
+    //get location
+    //get weather 
+
+    if(acceptable){
+        if(travelLength <= shortTrav){
+            
+        }
+        else if(travelLength <= medTrav && travelLength > shortTrav){
+            //suggest mediumlength/longlength
+        }else{
+            //suggest 
+        }
+    }else{
+        //suggest 
+    }
+
+}
+
 // Replace the following array with your calculated savings data
 const savingsData = [
     { mode: 'Biking', savings: 80 },
