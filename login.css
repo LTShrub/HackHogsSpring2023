@@ -2,14 +2,26 @@
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: white;
 }
 
-h1 {
+header {
+    background-color: #4CAF50;
+    color: white;
     text-align: center;
-    color: #333;
+    padding: 0rem;
+    /* border: none; */
+}
+
+h2 {
+    text-align: center;
+    color: #171717;
 }
 
 form {
@@ -23,17 +35,28 @@ form {
 
 label {
     display: block;
-    margin-bottom: 10px;
-    color: #666;
+    margin-bottom: 1rem;
+    color: #171717;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
 }
 
 input[type="text"], input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 0.5rem;
     border-radius: 5px;
     border: black;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     box-sizing: border-box;
+    position: relative;
+    border-bottom: 2px solid #4CAF50;
 }
 
 input[type="submit"] {
@@ -48,4 +71,10 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #3e8e41;
+}
+
+#logo{
+    width: 6rem;
+    height: 6rem;
+    margin-left: 1rem;
 }
