@@ -19,7 +19,7 @@ function findSolution(){
     //calculate carbon emisisons savings in grams
     walkSav = 411 * travelLength;
     pubSav = ((411 * travelLength) * 0.55);
-    carCost = 411 * travelLength;
+    carCost = 0;
     savingsData.length = 0;
 
     if(!raining){
