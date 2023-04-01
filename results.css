@@ -13,11 +13,11 @@ header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 0rem;
 }
 
 main {
-    padding: 0rem;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -47,6 +47,6 @@ button:hover {
 }
 
 #logo{
-    width: 9rem;
-    height: 9rem;
+    width: 6rem;
+    height: 6rem;
 }
