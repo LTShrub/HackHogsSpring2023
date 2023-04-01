@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.setItem('startLocation', startLocation);
             sessionStorage.setItem('endLocation', endLocation);
 
-            //Test Function DELETE ME
-            calcDist(startLocation, endLocation);
-
             // Navigate to results.html page once the user fills out the required fields and hit submit
             window.location.href = 'results.html';
         }

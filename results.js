@@ -4,21 +4,15 @@ const savingsRanked = document.getElementById('savings-ranked');
 const savingsData = [];
 const startDest = 0;
 const endDest = 0;
-const travelLength = 0;
-const raining = false;
+raining = false;
 
-//TODO Remove me Just for Testing Purposes
-function calcDist(startDest, endDest){
-    travelLength = endDest - startDest;
-}
-
-function findSolution(){
+function findSolution(travelLength){
     acceptable = false;
     shortTrav = 5;
     medTrav = 10;
     //calculate carbon emisisons savings in grams
-    walkSav = 411 * travelLength;
-    pubSav = ((411 * travelLength) * 0.55);
+    walkSav = 100;
+    pubSav = 45;
     carCost = 0;
     savingsData.length = 0;
 
@@ -46,6 +40,8 @@ function findSolution(){
     }
 
 }
+
+findSolution(7);
 
 // Sort the data in descending order based on savings
 savingsData.sort((a, b) => b.savings - a.savings);
