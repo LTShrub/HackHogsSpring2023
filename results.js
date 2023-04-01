@@ -57,11 +57,33 @@ function initMap() {
       })
       .then((response) => {
         directionsRenderer.setDirections(response);
+
+        // Calculate the distance between the two locations
+        const route = response.routes[0].legs[0];
+        const distance = route.distance.value;
+
+        sessionStorage.setItem("distance", distance);
+
+        calculateEmissionsAndFuelSaved(distance);
       })
       .catch((e) => window.alert("Directions request failed due to " + status));
   }
+
   
-  window.initMap = initMap;
+  function calculateEmissionsAndFuelSaved(distanceInMeters) {
+    // Convert distance from meters to miles
+    const distanceInMiles = distanceInMeters * 0.000621371;
+  
+    // Placeholder calculations
+    const emissionResults = distanceInMiles * 0.001; // Replace with your own calculation
+    const fuelSaved = distanceInMiles * 0.002; // Replace with your own calculation
+  
+    // Display the results in the respective elements
+    document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} kg CO2`;
+    document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} L`;
+  }
+  
+window.initMap = initMap;
 
 function findSolution(travelLength){
     acceptable = false;
