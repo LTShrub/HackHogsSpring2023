@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     loginButton.addEventListener('click', () => {
         window.location.href = 'login.html';
       });
