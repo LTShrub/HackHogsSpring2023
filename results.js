@@ -93,8 +93,6 @@ function initMap() {
     const distanceInMiles = distanceInMeters * 0.000621371;
     distance = distanceInMiles;
 
-    findSolution((distance));
-
 // Sort the data in descending order based on savings
 savingsData.sort((a, b) => b.savings - a.savings);
 
@@ -128,10 +126,7 @@ savingsData.forEach((item, index) => {
 
   
     window.initMap = initMap;
-
-    //const dist = sessionStorage.getItem("storeDist");
-    //console.log(dist);
-    //findSolution(dist);
+    findSolution((distance));
 
 function findSolution(travelLength){
     console.log(travelLength);
