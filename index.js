@@ -10,9 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const endLocation = locationEndInput.value.trim();
 
         if (startLocation && endLocation) {
-            // Store start and end location in sessionStorage (or localStorage)
+            // // Store start and end location in sessionStorage (or localStorage)
             sessionStorage.setItem('startLocation', startLocation);
             sessionStorage.setItem('endLocation', endLocation);
+
+            // Extract city, county, and state information from the user's inputted start and end locations
+            const startCity = ''; // Extract start city from startLocation
+            const startCounty = ''; // Extract start county from startLocation
+            const startState = ''; // Extract start state from startLocation
+
+            const endCity = ''; // Extract end city from endLocation
+            const endCounty = ''; // Extract end county from endLocation
+            const endState = ''; // Extract end state from endLocation
+
+            // Store start and end location details in sessionStorage
+            sessionStorage.setItem('startLocationDetails', JSON.stringify({city: startCity, county: startCounty, state: startState}));
+            sessionStorage.setItem('endLocationDetails', JSON.stringify({city: endCity, county: endCounty, state: endState}));
 
             // Navigate to results.html page once the user fills out the required fields and hit submit
             window.location.href = 'results.html';
