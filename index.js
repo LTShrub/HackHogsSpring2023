@@ -32,8 +32,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     loginButton.addEventListener('click', () => {
         window.location.href = 'login.html';
       });
 });
 
+function initAutocomplete() {
+    const input = document.getElementById("pac-input");
+    const searchBox = new google.maps.places.SearchBox(input);
+  
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener("places_changed", () => {
+      const places = searchBox.getPlaces();
+  
+      if (places.length == 0) {
+        return;
+      }
+  
+      const resultsDiv = document.getElementById("results");
+  
+      // Clear out any existing results.
+      resultsDiv.innerHTML = "";
+  
+      // Display a list of the search results.
+      places.forEach((place) => {
+        const result = document.createElement("div");
+        result.textContent = place.name;
+        resultsDiv.appendChild(result);
+      });
+    });
+  }
+  
+initAutocomplete();

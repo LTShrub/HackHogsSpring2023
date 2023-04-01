@@ -119,8 +119,6 @@ function initMap() {
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
     document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} gal`;
-    document.getElementById("distance").innerText = `${distanceInMiles.toFixed(1)} Miles`;
-
   }
   
     window.initMap = initMap;
@@ -137,7 +135,7 @@ function findSolution(travelLength){
     carCost = 0;
     savingsData.length = 0;
     
-    var json_obj = JSON.parse(getWeather(city, county, state, country));
+    var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
     temp = json_obj.current_condition[0].temp_F;
     weather = json_obj.current_condition[0].weatherDesc[0].value;
     console.log(weather);
