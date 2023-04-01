@@ -119,7 +119,7 @@ function initMap() {
 
         calculateEmissionsAndFuelSaved(distance);
       })
-      .catch((e) => window.alert("Directions request failed due to " + status));
+      .catch((e) => window.alert("Directions request failed due to an invalid selection" + status));
   }
 
   
@@ -208,7 +208,7 @@ savingsData.sort((a, b) => b.savings - a.savings);
 // Populate the list items
 savingsData.forEach((item, index) => {
     const listItem = document.createElement('li');
-    listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% savings`;
+    listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% carbon reduction`;
     savingsRanked.appendChild(listItem);
 });
 
