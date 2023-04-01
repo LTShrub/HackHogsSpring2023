@@ -2,15 +2,8 @@
 
 const savingsRanked = document.getElementById('savings-ranked');
 const savingsData = [];
-const startDest = 0;
-const endDest = 0;
-raining = false;
 var weather;
 var temp;
-var city = "Fayetteville";
-var county = "Washington";
-var state = "Arkansas";
-var country = "United States";
 
 function getWeather(part1, part2, part3, part4)
 {
@@ -36,30 +29,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const startCity = startLocationDetails.city;
     const startCounty = startLocationDetails.county;
     const startState = startLocationDetails.state;
+    const startCountry = startLocationDetails.country;
   
     const endCity = endLocationDetails.city;
     const endCounty = endLocationDetails.county;
     const endState = endLocationDetails.state;
+    const endCountry = endLocationDetails.country;
   
     // Call the weather API and retrieve the current weather for both start and end locations
-    const startWeather = getWeather(startCity, startCounty, startState, country);
-    const endWeather = getWeather(endCity, endCounty, endState, country);
+    const startWeather = getWeather(startCity, startCounty, startState, startCountry);
+    const endWeather = getWeather(endCity, endCounty, endState, endCountry);
   
     // Extract and display the temperature in Fahrenheit for start and end locations
     // Replace with actual temperature extraction based on the wttr.in API response
     // const startTempF = ''; // Extract temperature in Fahrenheit from startWeather API response
     // const endTempF = ''; // Extract temperature in Fahrenheit from endWeather API response
   
-    const startWeatherJSON = JSON.parse(startWeather);
-    const endWeatherJSON = JSON.parse(endWeather);
+    const startWeatherObj = JSON.parse(startWeather);
+    const endWeatherObj = JSON.parse(endWeather);
 
-    const startTempF = startWeatherJSON.current_condition[0].temp_F;
-    const endTempF = endWeatherJSON.current_condition[0].temp_F;
+    const startTempF = startWeatherObj.current_condition[0].temp_F;
+    const endTempF = endWeatherObj.current_condition[0].temp_F;
 
     const conditionsSaved = document.getElementById('conditions-saved');
     conditionsSaved.innerHTML = `Start: ${startTempF}°F | End: ${endTempF}°F`;
-  
-  });
+    });
   
 
 function initMap() {
@@ -109,7 +103,7 @@ function initMap() {
   
   function calculateEmissionsAndFuelSaved(distanceInMeters) {
     // Convert distance from meters to miles
-    const distanceInMiles = distanceInMeters * 0.000621371;
+    const distanceInMiles = distanceInMeters * 0.00062137;
   
     // Placeholder calculations
     const emissionResults = distanceInMiles * 0.001; // Replace with your own calculation
@@ -118,9 +112,10 @@ function initMap() {
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} kg CO2`;
     document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} L`;
+    document.getElementById("distance").innerText = `${distanceInMiles.toFixed(1)} Miles`;
   }
   
-window.initMap = initMap;
+    window.initMap = initMap;
 
 function findSolution(travelLength){
     acceptable = false;
