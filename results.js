@@ -57,12 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //const conditionsSaved = document.getElementById('conditions-saved');
     conditionsSaved.innerHTML = `Start: ${startTempF}°F | End: ${endTempF}°F`;
+    */
     const backButton = document.getElementById('back-button');
-
+    
     backButton.addEventListener('click', () => {
         // Navigate back to index.html
         window.location.href = 'index.html';
-    });*/
+    });
     
     var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
     startTemp = json_obj.current_condition[0].temp_F;
