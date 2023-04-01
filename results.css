@@ -78,6 +78,12 @@ button:hover {
     flex-direction: column;
 }
 
-#best-savings{
-    list-style-type: none;
+#start-weather-image{
+    width: 4rem;
+    height: 3rem;
+}
+
+#end-weather-image{
+    width: 4rem;
+    height: 3rem;
 }

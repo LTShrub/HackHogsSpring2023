@@ -36,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const conditionsSaved = document.getElementById('conditions-saved');
     conditionsSaved.innerHTML = `Start: ${startTemp}°F ${startCondition} | End: ${endTemp}°F ${endCondition}`;
   
+    const startWeatherImage = document.getElementById('start-weather-image');
+    const endWeatherImage = document.getElementById('end-weather-image');
+
+    startWeatherImage.src = getWeatherImage(startCondition);
+    endWeatherImage.src = getWeatherImage(endCondition);
 });
   
 
@@ -129,6 +134,37 @@ savingsData.forEach((item, index) => {
   
     window.initMap = initMap;
     //findSolution(distance);
+
+    //////////////////
+function getWeatherImage(weatherCondition){
+  let imageURL;
+
+  switch(weatherCondition.toLowerCase()){
+    case 'partly cloudy':
+    case 'cloudy':
+    case 'overcast':
+    case 'partly sunny':
+      imageURL = 'images/Cloudy.png';
+      break;
+    case 'clear':
+    case 'sunny':
+        imageURL = 'images/Sun.png';
+        break;
+    case 'rain':
+    case 'showers':
+    case 'light rain':
+        imageURL = 'images/Rainy.png';
+        break;
+    case 'snow':
+    case 'sleet':
+        imageURL = 'images/Snow.png';
+        break;
+    default:
+      imageURL = 'images/Sun.png';
+  }
+  return imageURL;
+}
+
 
 function findSolution(travelLength){
     console.log(travelLength);
