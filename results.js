@@ -145,7 +145,9 @@ function initMap() {
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
     document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} gal`;
-    document.getElementById("distance").innerText = `${distanceInMiles.toFixed(2)} Miles`;
+
+    document.getElementById("distance").innerText = `${distanceInMiles.toFixed(1)} Miles`;
+
 
   }
   
