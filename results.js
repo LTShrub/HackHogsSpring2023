@@ -25,45 +25,6 @@ function getWeather(part1, part2, part3, part4)
 // results.js
 
 document.addEventListener('DOMContentLoaded', () => {
-   /* // Retrieve start and end location details from sessionStorage
-    const startLocationDetails = JSON.parse(sessionStorage.getItem('startLocationDetails'));
-    const endLocationDetails = JSON.parse(sessionStorage.getItem('endLocationDetails'));
-  
-    // Extract city, county, and state information for start and end locations
-    const startCity = startLocationDetails.city;
-    const startCounty = startLocationDetails.county;
-    const startState = startLocationDetails.state;
-    const startCountry = startLocationDetails.country;
-  
-    const endCity = endLocationDetails.city;
-    const endCounty = endLocationDetails.county;
-    const endState = endLocationDetails.state;
-    const endCountry = endLocationDetails.country;
-  
-    // Call the weather API and retrieve the current weather for both start and end locations
-    const startWeather = getWeather(startCity, startCounty, startState, startCountry);
-    const endWeather = getWeather(endCity, endCounty, endState, endCountry);
-  
-    // Extract and display the temperature in Fahrenheit for start and end locations
-    // Replace with actual temperature extraction based on the wttr.in API response
-    // const startTempF = ''; // Extract temperature in Fahrenheit from startWeather API response
-    // const endTempF = ''; // Extract temperature in Fahrenheit from endWeather API response
-  
-    const startWeatherObj = JSON.parse(startWeather);
-    const endWeatherObj = JSON.parse(endWeather);
-
-    const startTempF = startWeatherObj.current_condition[0].temp_F;
-    const endTempF = endWeatherObj.current_condition[0].temp_F;
-
-    //const conditionsSaved = document.getElementById('conditions-saved');
-    conditionsSaved.innerHTML = `Start: ${startTempF}°F | End: ${endTempF}°F`;
-    const backButton = document.getElementById('back-button');
-
-    backButton.addEventListener('click', () => {
-        // Navigate back to index.html
-        window.location.href = 'index.html';
-    });*/
-    
     var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
     startTemp = json_obj.current_condition[0].temp_F;
     startCondition = json_obj.current_condition[0].weatherDesc[0].value;
