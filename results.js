@@ -7,9 +7,9 @@ const endDest = 0;
 raining = false;
 var weather;
 var temp;
-var city = "Fayetteville";
+//var city = "Fayetteville";
 var county = "Washington";
-var state = "Arkansas";
+//var state = "Arkansas";
 var country = "United States";
 
 function getWeather(part1, part2, part3, part4)
@@ -75,7 +75,7 @@ function findSolution(travelLength){
     carCost = 0;
     savingsData.length = 0;
     
-    var json_obj = JSON.parse(getWeather(city, county, state, country));
+    var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
     temp = json_obj.current_condition[0].temp_F;
     weather = json_obj.current_condition[0].weatherDesc[0].value;
     console.log(weather);
