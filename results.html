@@ -37,41 +37,61 @@
           <h2>Current Conditions</h2>
           <!-- <img id="start-weather-image" alt="Start location weather" /> -->
           <p id="conditions-saved">_____</p>
-          <p>
-            <img id="start-weather-image" alt="Start location weather" />
-            &nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="weather-container">
+            <!-- <p> -->
+            <img
+              id="start-weather-image"
+              alt="Start location weather"
+            />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <img id="end-weather-image" alt="End location weather" />
-          </p>
+            <!-- </p> -->
+          </div>
         </div>
       </div>
 
       <hr />
-      <div class="best-savings">
+      <!-- <div class="best-savings">
         <h2>Greenest Way to Travel</h2>
         <div id="alt-1"></div>
         <div id="alt-2"></div>
         <div id="alt-3"></div>
         <div id="alt-4"></div>
         <div id="alt-5"></div>
+      </div>
 
-        <!-- <ol id="savings-ranked">
-          
-        </ol> -->
+      <div id="floating-panel">
+        <b>Mode of Travel: </b>
+        <select id="mode">
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+          <option value="BICYCLING">Bicycling</option>
+          <option value="TRANSIT">Transit</option>
+        </select>
+      </div> -->
+      <div class="best-savings">
+        <div id="floating-panel">
+          <b>Mode of Travel: </b>
+          <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select>
+        </div>
+        <div class="savings-header">
+          <h2>Greenest Way to Travel</h2>
+        </div>
+        <div id="alt-1"></div>
+        <div id="alt-2"></div>
+        <div id="alt-3"></div>
+        <div id="alt-4"></div>
+        <div id="alt-5"></div>
       </div>
 
       <hr />
       <div id="map-container">
         <h2>Route Map</h2>
         <div class="map-wrapper">
-          <div id="floating-panel">
-            <b>Mode of Travel: </b>
-            <select id="mode">
-              <option value="DRIVING">Driving</option>
-              <option value="WALKING">Walking</option>
-              <option value="BICYCLING">Bicycling</option>
-              <option value="TRANSIT">Transit</option>
-            </select>
-          </div>
           <div id="map"></div>
         </div>
       </div>
