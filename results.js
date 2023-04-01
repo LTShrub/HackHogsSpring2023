@@ -47,10 +47,6 @@ function findSolution(travelLength){
             acceptable = true;
         }
     }
-    if(weather == 'Partly cloudy')
-    {
-        accepatable = true;
-    }
 
     if(acceptable){
         if(travelLength <= shortTrav){
