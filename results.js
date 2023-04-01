@@ -9,6 +9,8 @@ var mode;
 var county = "Washington";
 //var state = "Arkansas";
 var country = "United States";
+var county = "Washington";
+var country = "United States";
 
 function getWeather(part1, part2, part3, part4)
 {
@@ -26,7 +28,7 @@ function getWeather(part1, part2, part3, part4)
 // results.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Retrieve start and end location details from sessionStorage
+   /* // Retrieve start and end location details from sessionStorage
     const startLocationDetails = JSON.parse(sessionStorage.getItem('startLocationDetails'));
     const endLocationDetails = JSON.parse(sessionStorage.getItem('endLocationDetails'));
   
@@ -56,14 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const startTempF = startWeatherObj.current_condition[0].temp_F;
     const endTempF = endWeatherObj.current_condition[0].temp_F;
 
-    const conditionsSaved = document.getElementById('conditions-saved');
+    //const conditionsSaved = document.getElementById('conditions-saved');
     conditionsSaved.innerHTML = `Start: ${startTempF}°F | End: ${endTempF}°F`;
     const backButton = document.getElementById('back-button');
 
     backButton.addEventListener('click', () => {
         // Navigate back to index.html
         window.location.href = 'index.html';
-    });
+    });*/
+    
+    var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
+    startTemp = json_obj.current_condition[0].temp_F;
+    startCondition = json_obj.current_condition[0].weatherDesc[0].value;
+    var json_obj2 = JSON.parse(getWeather(sessionStorage.getItem("endLocation").split(', ')[0], county, sessionStorage.getItem("endLocation").split(', ')[1], country));
+    endTemp = json_obj2.current_condition[0].temp_F;
+    endCondition = json_obj2.current_condition[0].weatherDesc[0].value;
+
+    const conditionsSaved = document.getElementById('conditions-saved');
+    conditionsSaved.innerHTML = `Start: ${startTemp}°F ${startCondition} | End: ${endTemp}°F ${endCondition}`;
+  
   });
   
 
