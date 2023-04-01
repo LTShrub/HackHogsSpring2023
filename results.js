@@ -115,7 +115,6 @@ function initMap() {
     const distanceInMiles = distanceInMeters * 0.000621371;
   
     // Placeholder calculations
-    var mpg;
     var multi;
     if(mode == 'WALKING' || mode == 'BICYCLING'){
         multi = 0;
@@ -124,8 +123,8 @@ function initMap() {
     }else{
         multi = 1;
     }
-    const emissionResults = distanceInMiles * multi; // Replace with your own calculation
-    const fuelSaved = distanceInMiles * 0.002; // Replace with your own calculation
+    const emissionResults = (distanceInMiles * 0.411) * multi; // Replace with your own calculation
+    const fuelSaved = distanceInMiles * (1/mpg); //
   
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
