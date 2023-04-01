@@ -1,3 +1,5 @@
+// Add this code to the existing results.js file
+
 const savingsRanked = document.getElementById('savings-ranked');
 const savingsData = [];
 var weather;
@@ -34,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const conditionsSaved = document.getElementById('conditions-saved');
     conditionsSaved.innerHTML = `Start: ${startTemp}°F ${startCondition} | End: ${endTemp}°F ${endCondition}`;
   
+    const startWeatherImage = document.getElementById('start-weather-image');
+    const endWeatherImage = document.getElementById('end-weather-image');
+
+    startWeatherImage.src = getWeatherImage(startCondition);
+    endWeatherImage.src = getWeatherImage(endCondition);
 });
   
 
@@ -74,8 +81,8 @@ function initMap() {
         // Calculate the distance between the two locations
         const route = response.routes[0].legs[0];
         const distance = route.distance.value;
-        //getDist = distance
-        
+        //getDist = distance;
+
         calculateEmissionsAndFuelSaved(distance);
       })
 
@@ -131,6 +138,37 @@ savingsData.forEach((item, index) => {
     //console.log(dist);
     //findSolution(dist);
 
+    //////////////////
+function getWeatherImage(weatherCondition){
+  let imageURL;
+
+  switch(weatherCondition.toLowerCase()){
+    case 'partly cloudy':
+    case 'cloudy':
+    case 'overcast':
+    case 'partly sunny':
+      imageURL = 'images/Cloudy.png';
+      break;
+    case 'clear':
+    case 'sunny':
+        imageURL = 'images/Sun.png';
+        break;
+    case 'rain':
+    case 'showers':
+    case 'light rain':
+        imageURL = 'images/Rainy.png';
+        break;
+    case 'snow':
+    case 'sleet':
+        imageURL = 'images/Snow.png';
+        break;
+    default:
+      imageURL = 'images/Sun.png';
+  }
+  return imageURL;
+}
+
+
 function findSolution(travelLength){
     console.log(travelLength);
     acceptable = false;
@@ -159,31 +197,26 @@ function findSolution(travelLength){
 
     if(acceptable){
         if(travelLength <= shortTrav){
-          document.getElementById("alt-1").innerText = "Walking";
-          document.getElementById("alt-2").innerText = "Biking";
-          document.getElementById("alt-3").innerText = "Public Transit";
-          document.getElementById("alt-4").innerText = "Carpooling";
-          document.getElementById("alt-5").innerText = "Driving";
+            savingsData.push({mode: 'Walking', savings: walkSav});
+            savingsData.push({mode: 'Biking', savings: walkSav});
+            savingsData.push({mode: 'Public Transit', savings: pubSav});
+            savingsData.push({mode: 'Carpooling', savings: pubSav});
+            savingsData.push({mode: 'Driving', savings: carCost});
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
-          document.getElementById("alt-1").innerText = "Biking";
-          document.getElementById("alt-2").innerText = "Public Transit";
-          document.getElementById("alt-3").innerText = "Carpooling";
-          document.getElementById("alt-4").innerText = "Driving";
-          document.getElementById("alt-5").innerText = "";
+            savingsData.push({mode: 'Biking', savings: walkSav});
+            savingsData.push({mode: 'Public Transit', savings: pubSav});
+            savingsData.push({mode: 'Carpooling', savings: pubSav});
+            savingsData.push({mode: 'Driving', savings: carCost});
         }else{
-          document.getElementById("alt-1").innerText = "Carpooling";
-          document.getElementById("alt-2").innerText = "Driving";
-          document.getElementById("alt-3").innerText = "";
-          document.getElementById("alt-4").innerText = "";
-          document.getElementById("alt-5").innerText = "";
+            savingsData.push({mode: 'Carpooling', savings: pubSav});
+            savingsData.push({mode: 'Driving', savings: carCost});
+            console.log("in else");
         }
     }else{
-      document.getElementById("alt-1").innerText = "Carpooling";
-      document.getElementById("alt-2").innerText = "Driving";
-      document.getElementById("alt-3").innerText = "";
-      document.getElementById("alt-4").innerText = "";
-      document.getElementById("alt-5").innerText = "";
+        savingsData.push({mode: 'Carpooling', savings: pubSav});
+        savingsData.push({mode: 'Driving', savings: carCost});
+        console.log("not acceptable");
     }
 }
 
