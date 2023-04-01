@@ -5,18 +5,42 @@ const savingsData = [];
 const startDest = 0;
 const endDest = 0;
 raining = false;
+var weather;
+var temp;
+var city = "Fayetteville";
+var county = "Washington";
+var state = "Arkansas";
+var country = "United States";
+
+function getWeather(part1, part2, part3, part4)
+{
+
+	let url = "https://wttr.in/" + part1 + "," + part2 + "," + part3 + "?format=j1";
+	console.log(url);
+
+	var httpREQ = new XMLHttpRequest();
+	httpREQ.open("GET", url, false);
+	httpREQ.send(null);
+
+	return (httpREQ.responseText);
+}
 
 function findSolution(travelLength){
     acceptable = false;
     shortTrav = 5;
     medTrav = 10;
+    minTemp = 40;
+    maxTemp = 85;
     //calculate carbon emisisons savings in grams
     walkSav = 100;
     pubSav = 45;
     carCost = 0;
     savingsData.length = 0;
-
-    if(!raining){
+    
+    var json_obj = JSON.parse(getWeather(city, county, state, country));
+    temp = json_obj.current_condition[0].temp_F;
+    if(temp > minTemp && temp < maxTemp){
+        
         acceptable = true;
     }
 
@@ -36,7 +60,7 @@ function findSolution(travelLength){
         }
     }else{
         savingsData.push({mode: 'Carpooling', savings: pubSav});
-        savingsData.push({mode: 'Driving', savings: carSav});
+        savingsData.push({mode: 'Driving', savings: carCost});
     }
 
 }
