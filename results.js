@@ -7,7 +7,8 @@ var temp;
 var mode;
 var county = "Washington";
 var country = "United States";
-var distance;
+var getDist = 0;
+
 
 function getWeather(part1, part2, part3, part4)
 {
@@ -24,7 +25,7 @@ function getWeather(part1, part2, part3, part4)
 
 // results.js
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {  
     var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
     startTemp = json_obj.current_condition[0].temp_F;
     startCondition = json_obj.current_condition[0].weatherDesc[0].value;
@@ -75,8 +76,7 @@ function initMap() {
         // Calculate the distance between the two locations
         const route = response.routes[0].legs[0];
         const distance = route.distance.value;
-
-        sessionStorage.setItem("distance", distance);
+        //getDist = distance;
 
         calculateEmissionsAndFuelSaved(distance);
       })
@@ -104,6 +104,8 @@ savingsData.forEach((item, index) => {
     listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% savings`;
     savingsRanked.appendChild(listItem);
 });
+    getDist = distanceInMiles;
+    sessionStorage.setItem('storeDist', getDist);
   
     // Placeholder calculations
     var multi;
@@ -121,14 +123,21 @@ savingsData.forEach((item, index) => {
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
     document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} gal`;
     document.getElementById("distance").innerText = `${distanceInMiles.toFixed(1)} Miles`;
+    document.getElementById("distance").innerText = `${distanceInMiles.toFixed(2)} Miles`;
   }
+
   
     window.initMap = initMap;
 
+    //const dist = sessionStorage.getItem("storeDist");
+    //console.log(dist);
+    //findSolution(dist);
+
 function findSolution(travelLength){
+    console.log(travelLength);
     acceptable = false;
-    shortTrav = 5;
-    medTrav = 10;
+    shortTrav = 10;
+    medTrav = 15;
     minTemp = 40;
     maxTemp = 85;
     //calculate carbon emisisons savings in grams
@@ -144,9 +153,11 @@ function findSolution(travelLength){
     if(temp > minTemp && temp < maxTemp){
         if(weather == 'Partly cloudy' || weather == 'Clear' || weather == "Overcast" || weather == "Sunny" || weather == 'Cloudy' || weather == 'Partly sunny')
         {
+      
             acceptable = true;
         }
     }
+    console.log(acceptable);
 
     if(acceptable){
         if(travelLength <= shortTrav){
@@ -164,10 +175,12 @@ function findSolution(travelLength){
         }else{
             savingsData.push({mode: 'Carpooling', savings: pubSav});
             savingsData.push({mode: 'Driving', savings: carCost});
+            console.log("in else");
         }
     }else{
         savingsData.push({mode: 'Carpooling', savings: pubSav});
         savingsData.push({mode: 'Driving', savings: carCost});
+        console.log("not acceptable");
     }
 }
 
@@ -180,7 +193,6 @@ backButton.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
 
-findSolution((distance));
 
 // Sort the data in descending order based on savings
 savingsData.sort((a, b) => b.savings - a.savings);
@@ -191,4 +203,3 @@ savingsData.forEach((item, index) => {
     listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% carbon reduction`;
     savingsRanked.appendChild(listItem);
 });
-
