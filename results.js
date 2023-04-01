@@ -11,6 +11,7 @@ var temp;
 var county = "Washington";
 //var state = "Arkansas";
 var country = "United States";
+var mode;
 
 function getWeather(part1, part2, part3, part4)
 {
@@ -85,6 +86,7 @@ function initMap() {
   
   function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
     const selectedMode = document.getElementById("mode").value;
+    mode = selectedMode;
   
     directionsService
       .route({
@@ -112,7 +114,16 @@ function initMap() {
     const distanceInMiles = distanceInMeters * 0.000621371;
   
     // Placeholder calculations
-    const emissionResults = distanceInMiles * 0.001; // Replace with your own calculation
+    var mpg;
+    var multi;
+    if(mode == 'WALKING' || mode == 'BICYCLING'){
+        multi = 0;
+    }else if(mode == 'TRANSIT'){
+        multi = 0.55;
+    }else{
+        multi = 1;
+    }
+    const emissionResults = distanceInMiles * multi; // Replace with your own calculation
     const fuelSaved = distanceInMiles * 0.002; // Replace with your own calculation
   
     // Display the results in the respective elements
@@ -130,7 +141,7 @@ function findSolution(travelLength){
     maxTemp = 85;
     //calculate carbon emisisons savings in grams
     walkSav = 100;
-    pubSav = 45;
+    pubSav = 55;
     carCost = 0;
     savingsData.length = 0;
     
@@ -165,6 +176,8 @@ function findSolution(travelLength){
     }
 
 }
+
+
 
 findSolution(7);
 
