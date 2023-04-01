@@ -25,6 +25,38 @@ function getWeather(part1, part2, part3, part4)
 	return (httpREQ.responseText);
 }
 
+function initMap() {
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsService = new google.maps.DirectionsService();
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
+      center: { lat: 37.77, lng: -94}, 
+    });
+  
+    directionsRenderer.setMap(map);
+    calculateAndDisplayRoute(directionsService, directionsRenderer);
+    document.getElementById("mode").addEventListener("change", () => {
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
+    });
+  }
+  
+  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    const selectedMode = document.getElementById("mode").value;
+  
+    directionsService
+      .route({
+        origin: { lat: 36.055844350650204, lng: -94.19136409542826122 },
+        destination: { lat: 36.05485618529465, lng: -94.19288549950593 }, 
+        travelMode: google.maps.TravelMode[selectedMode],
+      })
+      .then((response) => {
+        directionsRenderer.setDirections(response);
+      })
+      .catch((e) => window.alert("Directions request failed due to " + status));
+  }
+  
+  window.initMap = initMap;
+
 function findSolution(travelLength){
     acceptable = false;
     shortTrav = 5;

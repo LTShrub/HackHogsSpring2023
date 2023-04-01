@@ -50,3 +50,23 @@ button:hover {
     width: 6rem;
     height: 6rem;
 }
+
+#map {
+    align-items: center;
+    height: 400px; /* set height to 400 pixels */
+    width: 600px; /* set width to 600 pixels */
+  }
+  
+  #floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 50px; /* set left position to 50 pixels */
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: "Roboto", "sans-serif";
+    line-height: 30px;
+    padding-left: 10px;
+  }
