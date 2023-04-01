@@ -180,13 +180,16 @@ function findSolution(travelLength){
             savingsData.push({mode: 'Biking', savings: walkSav});
             savingsData.push({mode: 'Public Transit', savings: pubSav});
             savingsData.push({mode: 'Carpooling', savings: pubSav});
+            savingsData.push({mode: 'Driving', savings: carCost});
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
             savingsData.push({mode: 'Biking', savings: walkSav});
             savingsData.push({mode: 'Public Transit', savings: pubSav});
             savingsData.push({mode: 'Carpooling', savings: pubSav});
+            savingsData.push({mode: 'Driving', savings: carCost});
         }else{
             savingsData.push({mode: 'Carpooling', savings: pubSav});
+            savingsData.push({mode: 'Driving', savings: carCost});
         }
     }else{
         savingsData.push({mode: 'Carpooling', savings: pubSav});
