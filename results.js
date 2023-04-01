@@ -139,7 +139,7 @@ function initMap() {
         multi = 1;
     }
     const emissionResults = (distanceInMiles * 0.411) * multi; // Replace with your own calculation
-    fuelSaved = distanceInMiles * mph/1; 
+    fuelSaved = distanceInMiles * mpg/1; 
   
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
