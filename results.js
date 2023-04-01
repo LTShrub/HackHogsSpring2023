@@ -126,6 +126,7 @@ function initMap() {
   function calculateEmissionsAndFuelSaved(distanceInMeters) {
     // Convert distance from meters to miles
     const mpg = 25;
+    const gasCoLb = 19.5924972;
     const distanceInMiles = distanceInMeters * 0.000621371;
     distance = distanceInMiles;
   
@@ -138,8 +139,8 @@ function initMap() {
     }else{
         multi = 1;
     }
-    const emissionResults = (distanceInMiles * 0.411) * multi; // Replace with your own calculation
-    fuelSaved = distanceInMiles * mpg/1; 
+    const emissionResults = ((distanceInMiles * gasCoLb) / mpg) * multi; // Replace with your own calculation
+    fuelSaved = distanceInMiles / mpg; 
   
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
