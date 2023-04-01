@@ -77,3 +77,13 @@ button:hover {
     align-items: center;
     flex-direction: column;
 }
+
+#start-weather-image{
+    width: 4rem;
+    height: 3rem;
+}
+
+#end-weather-image{
+    width: 4rem;
+    height: 3rem;
+}
