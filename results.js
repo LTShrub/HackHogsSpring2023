@@ -7,6 +7,7 @@ var temp;
 var mode;
 var county = "Washington";
 var country = "United States";
+var distance;
 
 function getWeather(part1, part2, part3, part4)
 {
@@ -126,6 +127,7 @@ function initMap() {
     // Convert distance from meters to miles
     const mpg = 25;
     const distanceInMiles = distanceInMeters * 0.000621371;
+    distance = distanceInMiles;
   
     // Placeholder calculations
     var multi;
@@ -192,9 +194,7 @@ function findSolution(travelLength){
 
 }
 
-
-
-findSolution(7);
+findSolution((distance));
 
 // Sort the data in descending order based on savings
 savingsData.sort((a, b) => b.savings - a.savings);
