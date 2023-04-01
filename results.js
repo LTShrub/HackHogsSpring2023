@@ -197,7 +197,7 @@ function findSolution(travelLength){
 
     if(acceptable){
         if(travelLength <= shortTrav){
-
+          document.getElementById("message").innerText = "A great day for a walk!";
           document.getElementById("alt-1").innerText = "Walking 100%";
           document.getElementById("alt-2").innerText = "Biking 100%";
           document.getElementById("alt-3").innerText = "Public Transit 55%";
@@ -205,12 +205,14 @@ function findSolution(travelLength){
           document.getElementById("alt-5").innerText = "Driving 0%";
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
+          document.getElementById("message").innerText = "Great weather for a bike ride!";
           document.getElementById("alt-1").innerText = "Biking 100%";
           document.getElementById("alt-2").innerText = "Public Transit 55%";
           document.getElementById("alt-3").innerText = "Carpooling 55%";
           document.getElementById("alt-4").innerText = "Driving 0%";
           document.getElementById("alt-5").innerText = "";
         }else{
+          document.getElementById("message").innerText = "Long trip today. Try carpooling with some friends!";
           document.getElementById("alt-1").innerText = "Carpooling 55%";
           document.getElementById("alt-2").innerText = "Driving 0%";
           document.getElementById("alt-3").innerText = "";
@@ -218,6 +220,7 @@ function findSolution(travelLength){
           document.getElementById("alt-5").innerText = "";
         }
     }else{
+      document.getElementById("message").innerText = "Not great weather today unfortunately.";
       document.getElementById("alt-1").innerText = "Carpooling 55%";
       document.getElementById("alt-2").innerText = "Driving 0%";
       document.getElementById("alt-3").innerText = "";
