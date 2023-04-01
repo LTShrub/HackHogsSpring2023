@@ -25,7 +25,6 @@ function getWeather(part1, part2, part3, part4)
 
 // results.js
 
-document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {  
     var json_obj = JSON.parse(getWeather(sessionStorage.getItem("startLocation").split(', ')[0], county, sessionStorage.getItem("startLocation").split(', ')[1], country));
     startTemp = json_obj.current_condition[0].temp_F;
@@ -129,13 +128,10 @@ savingsData.forEach((item, index) => {
 
   
     window.initMap = initMap;
-    
-    setTimeout(function(){}, 2000);
 
-    const dist = sessionStorage.getItem("storeDist");
-    console.log(dist);
-    findSolution(dist);
-
+    //const dist = sessionStorage.getItem("storeDist");
+    //console.log(dist);
+    //findSolution(dist);
 
 function findSolution(travelLength){
     console.log(travelLength);
@@ -207,5 +203,3 @@ savingsData.forEach((item, index) => {
     listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% carbon reduction`;
     savingsRanked.appendChild(listItem);
 });
-
-
