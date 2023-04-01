@@ -1,40 +1,38 @@
 // Add this code to the existing results.js file
 
 const savingsRanked = document.getElementById('savings-ranked');
+const savingsData = [];
 
 function findSolution(travelLength, raining){
     acceptable = false;
     shortTrav = 5;
     medTrav = 10;
+    savingsData.length = 0;
 
     if(!raining){
         acceptable = true;
     }
 
-    //get location
-    //get weather 
-
     if(acceptable){
         if(travelLength <= shortTrav){
-            
+            savingsData.push({mode: 'Walking', savings: 100});
+            savingsData.push({mode: 'Biking', savings: 100});
+            savingsData.push({mode: 'Public Transit', savings: 100});
+            savingsData.push({mode: 'Carpooling', savings: 40});
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
-            //suggest mediumlength/longlength
+            savingsData.push({mode: 'Biking', savings: 100});
+            savingsData.push({mode: 'Public Transit', savings: 100});
+            savingsData.push({mode: 'Carpooling', savings: 40});
         }else{
-            //suggest 
+            savingsData.push({mode: 'Carpooling', savings: 40});
         }
     }else{
-        //suggest 
+        savingsData.push({mode: 'Carpooling', savings: 40});
+        savingsData.push({mode: 'Driving', savings: 0});
     }
 
 }
-
-// Replace the following array with your calculated savings data
-const savingsData = [
-    { mode: 'Biking', savings: 80 },
-    { mode: 'Public Transit', savings: 60 },
-    { mode: 'Carpooling', savings: 40 },
-];
 
 // Sort the data in descending order based on savings
 savingsData.sort((a, b) => b.savings - a.savings);
