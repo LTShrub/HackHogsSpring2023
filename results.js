@@ -53,7 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const conditionsSaved = document.getElementById('conditions-saved');
     conditionsSaved.innerHTML = `Start: ${startTempF}°F | End: ${endTempF}°F`;
+    const backButton = document.getElementById('back-button');
+
+    backButton.addEventListener('click', () => {
+        // Navigate back to index.html
+        window.location.href = 'index.html';
     });
+  });
   
 
 function initMap() {
@@ -172,12 +178,4 @@ savingsData.forEach((item, index) => {
     listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% savings`;
     savingsRanked.appendChild(listItem);
 });
-document.addEventListener('DOMContentLoaded', () => {
-    const backButton = document.getElementById('back-button');
 
-    backButton.addEventListener('click', () => {
-        // Navigate back to index.html
-        window.location.href = 'index.html';
-    });
-
-});
