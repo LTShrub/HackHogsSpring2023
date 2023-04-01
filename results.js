@@ -5,10 +5,6 @@ const savingsData = [];
 var weather;
 var temp;
 var mode;
-//var city = "Fayetteville";
-var county = "Washington";
-//var state = "Arkansas";
-var country = "United States";
 var county = "Washington";
 var country = "United States";
 
