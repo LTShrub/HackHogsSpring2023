@@ -103,16 +103,18 @@ function initMap() {
   
   function calculateEmissionsAndFuelSaved(distanceInMeters) {
     // Convert distance from meters to miles
-    const distanceInMiles = distanceInMeters * 0.00062137;
+    const mpg = 25;
+    const distanceInMiles = distanceInMeters * 0.000621371;
   
     // Placeholder calculations
-    const emissionResults = distanceInMiles * 0.001; // Replace with your own calculation
-    const fuelSaved = distanceInMiles * 0.002; // Replace with your own calculation
+    const emissionResults = distanceInMiles * (1/mpg) * (8887) * (0.00220462); // Replace with your own calculation
+    const fuelSaved = distanceInMiles * (1/mpg); // Replace with your own calculation
   
     // Display the results in the respective elements
-    document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} kg CO2`;
-    document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} L`;
+    document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
+    document.getElementById("fuel-saved").innerText = `${fuelSaved.toFixed(2)} gal`;
     document.getElementById("distance").innerText = `${distanceInMiles.toFixed(1)} Miles`;
+
   }
   
     window.initMap = initMap;
