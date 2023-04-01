@@ -77,3 +77,7 @@ button:hover {
     align-items: center;
     flex-direction: column;
 }
+
+#best-savings{
+    list-style-type: none;
+}

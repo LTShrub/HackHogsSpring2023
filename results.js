@@ -92,6 +92,7 @@ function initMap() {
     const gasCoLb = 19.5924972;
     const distanceInMiles = distanceInMeters * 0.000621371;
     distance = distanceInMiles;
+    findSolution(distance);
 
 // Sort the data in descending order based on savings
 savingsData.sort((a, b) => b.savings - a.savings);
@@ -102,6 +103,7 @@ savingsData.forEach((item, index) => {
     listItem.textContent = `${index + 1}. ${item.mode} - ${item.savings}% savings`;
     savingsRanked.appendChild(listItem);
 });
+    
     getDist = distanceInMiles;
     sessionStorage.setItem('storeDist', getDist);
   
@@ -126,10 +128,11 @@ savingsData.forEach((item, index) => {
 
   
     window.initMap = initMap;
-    findSolution((distance));
+    //findSolution(distance);
 
 function findSolution(travelLength){
     console.log(travelLength);
+    console.log("hi");
     acceptable = false;
     shortTrav = 10;
     medTrav = 15;
@@ -161,8 +164,13 @@ function findSolution(travelLength){
             savingsData.push({mode: 'Public Transit', savings: pubSav});
             savingsData.push({mode: 'Carpooling', savings: pubSav});
             savingsData.push({mode: 'Driving', savings: carCost});
+            console.log(savingsData.length);
+            if(savingsData.length > 5){
+              savingsData = [];
+            }
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
+          console.log(savingsData.length);
             savingsData.push({mode: 'Biking', savings: walkSav});
             savingsData.push({mode: 'Public Transit', savings: pubSav});
             savingsData.push({mode: 'Carpooling', savings: pubSav});
