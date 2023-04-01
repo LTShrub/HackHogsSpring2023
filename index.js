@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const locationForm = document.getElementById('location-form');
+    const loginButton = document.getElementById('login-btn');
 
     locationForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -17,4 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'results.html';
         }
     });
+    loginButton.addEventListener('click', () => {
+        window.location.href = 'login.html';
+      });
 });
