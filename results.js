@@ -45,11 +45,12 @@ savingsData.forEach((item, index) => {
 });
 document.addEventListener('DOMContentLoaded', () => {
     const backButton = document.getElementById('back-button');
+    // Retrieve start and end location from sessionStorage (or localStorage)
+    const startLocation = sessionStorage.getItem('startLocation');
+    const endLocation = sessionStorage.getItem('endLocation');
 
     backButton.addEventListener('click', () => {
         // Navigate back to index.html
         window.location.href = 'index.html';
     });
-
-    // Rest of the code
 });
