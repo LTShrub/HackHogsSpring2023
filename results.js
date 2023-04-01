@@ -34,19 +34,25 @@ function initMap() {
     });
   
     directionsRenderer.setMap(map);
-    calculateAndDisplayRoute(directionsService, directionsRenderer);
+
+    //get start and end location from sessionStorage
+    const startLocation = sessionStorage.getItem("startLocation");
+    const endLocation =  sessionStorage.getItem("endLocation");
+
+    calculateAndDisplayRoute(directionsService, directionsRenderer, startLocation, endLocation);
+
     document.getElementById("mode").addEventListener("change", () => {
-      calculateAndDisplayRoute(directionsService, directionsRenderer);
+      calculateAndDisplayRoute(directionsService, directionsRenderer, startLocation, endLocation);
     });
   }
   
-  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+  function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
     const selectedMode = document.getElementById("mode").value;
   
     directionsService
       .route({
-        origin: { lat: 36.055844350650204, lng: -94.19136409542826122 },
-        destination: { lat: 36.05485618529465, lng: -94.19288549950593 }, 
+        origin: start,
+        destination:end,
         travelMode: google.maps.TravelMode[selectedMode],
       })
       .then((response) => {
