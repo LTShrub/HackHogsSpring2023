@@ -25,6 +25,43 @@ function getWeather(part1, part2, part3, part4)
 	return (httpREQ.responseText);
 }
 
+// results.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve start and end location details from sessionStorage
+    const startLocationDetails = JSON.parse(sessionStorage.getItem('startLocationDetails'));
+    const endLocationDetails = JSON.parse(sessionStorage.getItem('endLocationDetails'));
+  
+    // Extract city, county, and state information for start and end locations
+    const startCity = startLocationDetails.city;
+    const startCounty = startLocationDetails.county;
+    const startState = startLocationDetails.state;
+  
+    const endCity = endLocationDetails.city;
+    const endCounty = endLocationDetails.county;
+    const endState = endLocationDetails.state;
+  
+    // Call the weather API and retrieve the current weather for both start and end locations
+    const startWeather = getWeather(startCity, startCounty, startState, country);
+    const endWeather = getWeather(endCity, endCounty, endState, country);
+  
+    // Extract and display the temperature in Fahrenheit for start and end locations
+    // Replace with actual temperature extraction based on the wttr.in API response
+    // const startTempF = ''; // Extract temperature in Fahrenheit from startWeather API response
+    // const endTempF = ''; // Extract temperature in Fahrenheit from endWeather API response
+  
+    const startWeatherJSON = JSON.parse(startWeather);
+    const endWeatherJSON = JSON.parse(endWeather);
+
+    const startTempF = startWeatherJSON.current_condition[0].temp_F;
+    const endTempF = endWeatherJSON.current_condition[0].temp_F;
+
+    const conditionsSaved = document.getElementById('conditions-saved');
+    conditionsSaved.innerHTML = `Start: ${startTempF}°F | End: ${endTempF}°F`;
+  
+  });
+  
+
 function initMap() {
     const directionsRenderer = new google.maps.DirectionsRenderer();
     const directionsService = new google.maps.DirectionsService();
@@ -148,5 +185,4 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
-    // Rest of the code
 });
