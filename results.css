@@ -17,7 +17,7 @@ header {
 }
 
 main {
-    padding: 2rem;
+    padding: 0rem;
     text-align: center;
 }
 
@@ -44,4 +44,9 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+#logo{
+    width: 9rem;
+    height: 9rem;
 }
