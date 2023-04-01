@@ -39,9 +39,17 @@ function findSolution(travelLength){
     
     var json_obj = JSON.parse(getWeather(city, county, state, country));
     temp = json_obj.current_condition[0].temp_F;
+    weather = json_obj.current_condition[0].weatherDesc[0].value;
+    console.log(weather);
     if(temp > minTemp && temp < maxTemp){
-        
-        acceptable = true;
+        if(weather == 'Partly cloudy' || weather == 'Clear' || weather == "Overcast" || weather == "Sunny" || weather == 'Cloudy' || weather == 'Partly sunny')
+        {
+            acceptable = true;
+        }
+    }
+    if(weather == 'Partly cloudy')
+    {
+        accepatable = true;
     }
 
     if(acceptable){
