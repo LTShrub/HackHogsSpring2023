@@ -2,11 +2,24 @@
 
 const savingsRanked = document.getElementById('savings-ranked');
 const savingsData = [];
+const startDest = 0;
+const endDest = 0;
+const travelLength = 0;
+const raining = false;
 
-function findSolution(travelLength, raining){
+//TODO Remove me Just for Testing Purposes
+function calcDist(startDest, endDest){
+    travelLength = endDest - startDest;
+}
+
+function findSolution(){
     acceptable = false;
     shortTrav = 5;
     medTrav = 10;
+    //calculate carbon emisisons savings in grams
+    walkSav = 411 * travelLength;
+    pubSav = ((411 * travelLength) * 0.55);
+    carCost = 411 * travelLength;
     savingsData.length = 0;
 
     if(!raining){
@@ -15,21 +28,21 @@ function findSolution(travelLength, raining){
 
     if(acceptable){
         if(travelLength <= shortTrav){
-            savingsData.push({mode: 'Walking', savings: 100});
-            savingsData.push({mode: 'Biking', savings: 100});
-            savingsData.push({mode: 'Public Transit', savings: 100});
-            savingsData.push({mode: 'Carpooling', savings: 40});
+            savingsData.push({mode: 'Walking', savings: walkSav});
+            savingsData.push({mode: 'Biking', savings: walkSav});
+            savingsData.push({mode: 'Public Transit', savings: pubSav});
+            savingsData.push({mode: 'Carpooling', savings: pubSav});
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
-            savingsData.push({mode: 'Biking', savings: 100});
-            savingsData.push({mode: 'Public Transit', savings: 100});
-            savingsData.push({mode: 'Carpooling', savings: 40});
+            savingsData.push({mode: 'Biking', savings: walkSav});
+            savingsData.push({mode: 'Public Transit', savings: pubSav});
+            savingsData.push({mode: 'Carpooling', savings: pubSav});
         }else{
-            savingsData.push({mode: 'Carpooling', savings: 40});
+            savingsData.push({mode: 'Carpooling', savings: pubSav});
         }
     }else{
-        savingsData.push({mode: 'Carpooling', savings: 40});
-        savingsData.push({mode: 'Driving', savings: 0});
+        savingsData.push({mode: 'Carpooling', savings: pubSav});
+        savingsData.push({mode: 'Driving', savings: carSav});
     }
 
 }
@@ -45,12 +58,11 @@ savingsData.forEach((item, index) => {
 });
 document.addEventListener('DOMContentLoaded', () => {
     const backButton = document.getElementById('back-button');
-    // Retrieve start and end location from sessionStorage (or localStorage)
-    const startLocation = sessionStorage.getItem('startLocation');
-    const endLocation = sessionStorage.getItem('endLocation');
 
     backButton.addEventListener('click', () => {
         // Navigate back to index.html
         window.location.href = 'index.html';
     });
+
+    // Rest of the code
 });
