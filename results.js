@@ -197,26 +197,32 @@ function findSolution(travelLength){
 
     if(acceptable){
         if(travelLength <= shortTrav){
-            savingsData.push({mode: 'Walking', savings: walkSav});
-            savingsData.push({mode: 'Biking', savings: walkSav});
-            savingsData.push({mode: 'Public Transit', savings: pubSav});
-            savingsData.push({mode: 'Carpooling', savings: pubSav});
-            savingsData.push({mode: 'Driving', savings: carCost});
+
+          document.getElementById("alt-1").innerText = "Walking 100%";
+          document.getElementById("alt-2").innerText = "Biking 100%";
+          document.getElementById("alt-3").innerText = "Public Transit 55%";
+          document.getElementById("alt-4").innerText = "Carpooling 55%";
+          document.getElementById("alt-5").innerText = "Driving 0%";
         }
         else if(travelLength <= medTrav && travelLength > shortTrav){
-            savingsData.push({mode: 'Biking', savings: walkSav});
-            savingsData.push({mode: 'Public Transit', savings: pubSav});
-            savingsData.push({mode: 'Carpooling', savings: pubSav});
-            savingsData.push({mode: 'Driving', savings: carCost});
+          document.getElementById("alt-1").innerText = "Biking 100%";
+          document.getElementById("alt-2").innerText = "Public Transit 55%";
+          document.getElementById("alt-3").innerText = "Carpooling 55%";
+          document.getElementById("alt-4").innerText = "Driving 0%";
+          document.getElementById("alt-5").innerText = "";
         }else{
-            savingsData.push({mode: 'Carpooling', savings: pubSav});
-            savingsData.push({mode: 'Driving', savings: carCost});
-            console.log("in else");
+          document.getElementById("alt-1").innerText = "Carpooling 55%";
+          document.getElementById("alt-2").innerText = "Driving 0%";
+          document.getElementById("alt-3").innerText = "";
+          document.getElementById("alt-4").innerText = "";
+          document.getElementById("alt-5").innerText = "";
         }
     }else{
-        savingsData.push({mode: 'Carpooling', savings: pubSav});
-        savingsData.push({mode: 'Driving', savings: carCost});
-        console.log("not acceptable");
+      document.getElementById("alt-1").innerText = "Carpooling 55%";
+      document.getElementById("alt-2").innerText = "Driving 0%";
+      document.getElementById("alt-3").innerText = "";
+      document.getElementById("alt-4").innerText = "";
+      document.getElementById("alt-5").innerText = "";
     }
 }
 
