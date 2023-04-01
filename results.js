@@ -4,6 +4,7 @@ const savingsRanked = document.getElementById('savings-ranked');
 const savingsData = [];
 var weather;
 var temp;
+var mode;
 var county = "Washington";
 var country = "United States";
 
@@ -98,6 +99,7 @@ function initMap() {
   
   function calculateAndDisplayRoute(directionsService, directionsRenderer, start, end) {
     const selectedMode = document.getElementById("mode").value;
+    mode = selectedMode;
   
     directionsService
       .route({
@@ -126,8 +128,16 @@ function initMap() {
     const distanceInMiles = distanceInMeters * 0.000621371;
   
     // Placeholder calculations
-    const emissionResults = distanceInMiles * (1/mpg) * (8887) * (0.00220462); // Replace with your own calculation
-    const fuelSaved = distanceInMiles * (1/mpg); // Replace with your own calculation
+    var multi;
+    if(mode == 'WALKING' || mode == 'BICYCLING'){
+        multi = 0;
+    }else if(mode == 'TRANSIT'){
+        multi = 0.55;
+    }else{
+        multi = 1;
+    }
+    const emissionResults = (distanceInMiles * 0.411) * multi; // Replace with your own calculation
+    fuelSaved = distanceInMiles * mph/1; 
   
     // Display the results in the respective elements
     document.getElementById("emission-results").innerText = `${emissionResults.toFixed(2)} lb CO2`;
@@ -146,7 +156,7 @@ function findSolution(travelLength){
     maxTemp = 85;
     //calculate carbon emisisons savings in grams
     walkSav = 100;
-    pubSav = 45;
+    pubSav = 55;
     carCost = 0;
     savingsData.length = 0;
     
@@ -181,6 +191,8 @@ function findSolution(travelLength){
     }
 
 }
+
+
 
 findSolution(7);
 
