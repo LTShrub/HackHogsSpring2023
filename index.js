@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'results.html';
         }
     });
+
     loginButton.addEventListener('click', () => {
         window.location.href = 'login.html';
       });
 });
-
 
 function initAutocomplete() {
     const input = document.getElementById("pac-input");

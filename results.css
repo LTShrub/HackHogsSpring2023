@@ -6,7 +6,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 0;
+    /* padding: 1 rem; */
 }
 
 header {
@@ -70,3 +70,10 @@ button:hover {
     line-height: 30px;
     padding-left: 10px;
   }
+
+  .map-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
