@@ -6,8 +6,10 @@
     <title>Ecofficient Results</title>
     <link rel="stylesheet" href="results.css" />
     <script src="results.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJFj8LdIvQ_-s0EWqiH3bkg0LTYW2Olmw&callback=initMap&v=weekly"
-      defer></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJFj8LdIvQ_-s0EWqiH3bkg0LTYW2Olmw&callback=initMap&v=weekly"
+      defer
+    ></script>
   </head>
   <body>
     <header>
@@ -39,17 +41,20 @@
       <hr />
       <div id="map-container">
         <h2>Route Map</h2>
-        <div id="floating-panel">
-          <b>Mode of Travel: </b>
-          <select id="mode">
-            <option value="DRIVING">Driving</option>
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Bicycling</option>
-            <option value="TRANSIT">Transit</option>
-          </select>
+        <div class="map-wrapper">
+          <div id="floating-panel">
+            <b>Mode of Travel: </b>
+            <select id="mode">
+              <option value="DRIVING">Driving</option>
+              <option value="WALKING">Walking</option>
+              <option value="BICYCLING">Bicycling</option>
+              <option value="TRANSIT">Transit</option>
+            </select>
+          </div>
+          <div id="map"></div>
         </div>
-        <div id="map"></div>
       </div>
+      <br />
       <button id="back-button">Go back</button>
     </main>
 
